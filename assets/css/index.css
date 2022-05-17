@@ -1,0 +1,262 @@
+@import "header.css";
+@import "banner.css";
+@import "footer.css";
+@import "tourPlace.css";
+/* tour tilte part (chung) */
+.tours__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-bottom: 60px;
+}
+.tours__desc {
+    color: #aaa;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 300;
+}
+.tours__title {
+    font-size: 40px;
+}
+.banner-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-image: url('https://www.tourmientaynambo.com/wp-content/uploads/Tour-du-lich-mien-tay-song-nuoc-hap-dan.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.banner-2__title {
+    color: #fff;
+    font-size: 56px;
+    margin-bottom: 30px;
+}
+.banner-2__desc {
+    color: #fff;
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+.banner-2__btn {
+    padding: 12px 32px;
+    border-radius: 24px;
+    font-size: 16px;
+    color: #fff;
+    background-color: var(--primary-color);
+}
+.banner-2__btn:hover {
+    background-color: rgba(66, 194, 255, 0.8);
+}
+/* tour slider */
+.tour-slider {
+    width: 1200px;
+    margin: 120px auto 60px;
+    display: flex;
+    justify-content: space-between;
+}
+.tour-slider__content {
+    padding: 20px 35px 20px 15px;
+}
+.tour-slider__name {
+    font-size: 40px;
+    color: #333;
+}
+.tour-slider__desc {
+    color: #888;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.tour-slider__details--rate {
+    position: relative;
+}
+.tour-slider__details--rate .rate {
+    font-size: 16px;
+}
+.tour-slider__details--rate .rate-active {
+    color: #F8B400;
+}
+.tour-slider__details--price {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+.tour-slider__details--btn {
+    margin-top: 10px;
+    padding: 10px 48px;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    color: #fff;
+    background-color: var(--primary-color);
+}
+/* slider */
+.slideshow {
+    max-width: 750px;
+    position: relative;
+}
+.slides {
+    width: 750px;
+    height: 410px;
+    display: flex;
+    position: relative;
+}
+.slides input {
+    display: none;
+}
+.slide-img {
+    position: absolute;
+    width: 750px;
+    height: 410px;
+    opacity: 0;
+    transition: opacity linear 2s;
+}
+/* manual navigation */
+.navigation-manual {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+.manual-btn {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+}
+.manual-btn:hover {
+    background-color: var(--primary-color);
+}
+.manual-btn:not(:last-child) {
+    margin-right: 10px;
+}
+#slide_1:checked ~ .slide-img.first {
+    opacity: 1;
+    z-index: 1;
+}
+#slide_2:checked ~ .slide-img.second {
+    opacity: 1;
+    z-index: 1;
+}
+#slide_3:checked ~ .slide-img.third {
+    opacity: 1;
+    z-index: 1;
+}
+#slide_4:checked ~ .slide-img.final {
+    opacity: 1;
+    z-index: 1;
+}
+/* navigation auto */
+.navigation-auto {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    z-index: 3;
+}
+.navigation-auto div {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+    cursor: pointer;
+}
+.navigation-auto div:not(:last-child) {
+    margin-right: 10px;
+}
+#slide_1:checked ~ .navigation-auto .auto-btn1 {
+    background-color: var(--primary-color);
+}
+#slide_2:checked ~ .navigation-auto .auto-btn2 {
+    background-color: var(--primary-color);
+}
+#slide_3:checked ~ .navigation-auto .auto-btn3 {
+    background-color: var(--primary-color);
+}
+#slide_4:checked ~ .navigation-auto .auto-btn4 {
+    background-color: var(--primary-color);
+}
+/* tourism cities */
+.tour-cities__place {
+    position: relative;
+    margin-bottom: 30px;
+}
+.tour-cities__place--img {
+    width: 100%;
+}
+.tour-cities__place--content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+.tour-cities__place--name {
+    color: #fff;
+    font-size: 20px;
+}
+.tour-cities__place--price {
+    color: #fff;
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 7px;
+}
+.tour-cities__place--btn {
+    padding: 6px 16px;
+    border-radius: 12px;
+    color: #fff;
+    background-color: var(--primary-color);
+}
+.tour-cities__place--btn:hover {
+    background-color: rgba(66, 194, 255, 0.8);
+}
+
+.tour-cities__container {
+    position: relative;
+}
+.tour-cities__map {
+    width: 100%;
+    overflow: hidden;
+}
+.tour-cities__map--img {
+    width: 100%;
+}
+.tour-cities__details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 40px;
+    background-color: rgba(255, 255 , 255, 0.5);
+}
+.tour-cities__title {
+    font-size: 40px;
+}
+.tour-cities__desc {
+    font-size: 18px;
+    color: #555;
+    margin-top: 10px;
+}
+.tour-cities__list {
+    list-style: unset;
+    margin-top: 10px;
+}
+.tour-cities__list--heading {
+    font-size: 18px;
+}
+.tour-cities__item {
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

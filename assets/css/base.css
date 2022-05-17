@@ -1,0 +1,62 @@
+:root{
+    --primary-color: #42C2FF;
+    --orange-color: #eb5e28;
+}
+
+html {
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+}
+body {
+    background-color: #f1f1f1;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+}
+
+img {
+    vertical-align: middle;
+}
+button {
+    cursor: pointer;
+    border: none;
+}
+.text-shadow {
+    text-shadow: 0 1px 3px #191919;
+}
+.text-center {
+    text-align: center;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slipDown {
+    from {
+        transform: translateY(-7px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
