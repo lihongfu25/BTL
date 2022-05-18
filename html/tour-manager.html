@@ -107,7 +107,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="odd">
+                        <tr class="odd table-row">
                             <td>1</td>
                             <td>1</td>
                             <td>1</td>
@@ -118,7 +118,7 @@
                                 <i class="fa-solid fa-trash-can delete-btn"></i>
                             </td>
                         </tr>
-                        <tr class="even">
+                        <tr class="even table-row">
                             <td>2</td>
                             <td>2</td>
                             <td>2</td>
@@ -134,31 +134,57 @@
             </div>
             <p class="copyright-text">&copy; All rights reserved. <strong>MTP Travel</strong></p>
         </div>
-        <form action="" class="form" method="post">
+        
+        <div class="form-container">
+            <form action="" class="form" method="post">
 
-            <div class="form-group">
-                <label for="" class="form-label"></label>
+                <h2 class="form-heading text-center">Nhập thông tin mới</h2>
+
+                <div class="form-group">
+                    <label for="tour-name" class="form-label">Tên tour:</label>
+                    <input id="tour-name" class="form-input" placeholder="Tên tour"></input>
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="destination" class="form-label">Điểm đến</label>
+                    <select name="destination" id="destination" class="form-input">
+                        <option value="default" class="form-option">Điểm đến</option>
+                        <option value="Hải Dương" class="form-option">Hải Dương</option>
+                        <option value="Vĩnh Phúc" class="form-option">Vĩnh Phúc</option>
+                        <option value="Nghệ An" class="form-option">Nghệ An</option>
+                    </select>
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="days" class="form-label">Số ngày:</label>
+                    <input id="days" class="form-input" placeholder="Số ngày"></input>
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="start-day" class="form-label">Ngày khởi hành:</label>
+                    <input id="start-day" type="datetime-local" class="form-input" placeholder="Ngày khởi hành"></input>
+                    <span class="form-message"></span>
+                </div>
+
+                <div class="form-btn text-center">
+                    <button class="btn-submit"></button>
+                    <button type="button" class="btn-cancel">Hủy</button>
+                </div>
+
+            </form>
+        </div>
+
+        <form class="form-delete text-center">
+            <p class="form-delete__message">Hành động này không thể hoàn tác. Bạn có chắc muốn tiếp tục ?</p>
+            <div class="form-delete__btn">
+                <button type="submit" class="form-delete__btn--yes">Có</button>
+                <button type="button" class="form-delete__btn--no">Không</button>
             </div>
-
-        </form>
+        </div>
     </div>
-
-    <script>
-        document.querySelector('.content__user').onclick = function() {
-            let menuUser = document.querySelector('.content__user--menu')
-            let caretUp = document.querySelector('.content__user--up')
-            let caretDown = document.querySelector('.content__user--down')
-
-            menuUser.classList.toggle('active')
-            if (menuUser.classList.contains('active')) {
-                caretDown.style.display = 'none'
-                caretUp.style.display = 'inline-block'
-            }
-            else {
-                caretDown.style.display = 'inline-block'
-                caretUp.style.display = 'none'
-            }
-        }
-    </script>
+    <script type="module" src="../assets/js/tour-manager.js"></script>
 </body>
 </html>
