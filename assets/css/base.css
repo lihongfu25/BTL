@@ -27,18 +27,46 @@ input {
     outline: none;
 }
 
+textarea {
+    outline: none;
+    resize: none;
+}
+
 img {
     vertical-align: middle;
 }
+
+select {
+    outline: none;
+}
+
 button {
     cursor: pointer;
     border: none;
 }
+
 .text-shadow {
     text-shadow: 0 1px 3px #191919;
 }
+
 .text-center {
     text-align: center;
+}
+
+.pastel-pink {
+    background-color: #f4bfbf;
+}
+
+.pastel-orange {
+    background-color: #ffd9c0;
+}
+
+.pastel-yellow {
+    background-color: #faf0d7;
+}
+
+.pastel-blue {
+    background-color: #b7e5dd;
 }
 
 @keyframes fadeIn {

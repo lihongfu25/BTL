@@ -16,7 +16,7 @@
 <body>
     <header class="header">
         <!-- logo -->
-        <a href="index.html" class="header__logo">
+        <a href="index.php" class="header__logo">
             <svg class="header__logo--img" xmlns="http://www.w3.org/2000/svg" clip-rule="evenodd" fill-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 635.7 292.97" style="fill: rgb(0, 0, 0);" role="img">
                 <g>
                     <path d="M139.48 186.36c-30.17,18.31 -21.73,29.67 -34.06,45.73 -32.35,-12.03 -56.31,1.96 -62.73,31.22 -10.35,-1.95 -21.22,-2.68 -30.49,3.46 -0.52,0.35 -23.36,22.43 -5.21,25.15 2.24,0.34 7.73,0.22 10.23,0.2 31.33,-0.32 62.79,-0.48 94.34,-0.53 70.43,-79.46 160.03,-143.85 268.8,-193.18 -8.47,-8.63 -18.18,-16.5 -31.39,-21.74 -67.17,-26.66 -145.41,13.86 -144.28,103.63 -28.01,-5.66 -40.9,-8.7 -65.2,6.05z" style="fill: rgb(40, 157, 210);"></path>
@@ -28,7 +28,7 @@
         <nav class="header__nav">
             
             <ul class="header__nav--list">
-                <li class="header__nav--item"><a href="index.html" class="header__nav--link">TRANG CHỦ</a></li>
+                <li class="header__nav--item"><a href="index.php" class="header__nav--link">TRANG CHỦ</a></li>
                 <li class="header__nav--item"><a href="" class="header__nav--link">GIỚI THIỆU</a></li>
                 <li class="header__nav--item">
                     <a href="" class="header__nav--link">TOUR</a>
@@ -60,7 +60,7 @@
         <!-- login -->
         <div class="header__login">
             <button class="header__login--btn">
-                <a href="login.html" style="color: #fff;">Đăng nhập</a>
+                <a href="login.php" style="color: #fff;">Đăng nhập</a>
             </button>
         </div>
         <!-- user -->
@@ -96,7 +96,7 @@
         <div class="search">
             <h1 class="search__heading1 text-shadow">Tìm kiếm kỳ nghỉ mà bạn thích</h1>
             <h1 class="search__heading2 text-shadow">Đừng bỏ lỡ những ưu đãi cực lớn</h1>
-            <form action="" name="" method="" class="search__form">
+            <form action="search.php" name="search" method="GET" class="search__form">
                 <select name="province" id="" class="search__select">
                     <option value="default" class="search__option">Địa điểm</option>
                     <option value="Hải Dương" class="search__option">Hải Dương</option>
@@ -105,10 +105,10 @@
                 </select>
                 <select name="price" id="" class="search__select">
                     <option value="default" class="search__option">Giá tiền</option>
-                    <option value="1" class="search__option">Dưới 2 triệu</option>
-                    <option value="2" class="search__option">2 triệu - 4 triệu</option>
-                    <option value="3" class="search__option">4 triệu - 6 triệu</option>
-                    <option value="4" class="search__option">Trên 6 triệu</option>                
+                    <option value="Dưới 2 triệu" class="search__option">Dưới 2 triệu</option>
+                    <option value="2 triệu - 4 triệu" class="search__option">2 triệu - 4 triệu</option>
+                    <option value="4 triệu - 6 triệu" class="search__option">4 triệu - 6 triệu</option>
+                    <option value="Trên 6 triệu" class="search__option">Trên 6 triệu</option>                
                 </select>
                 <div class="search__discount">
                     <label for="discount" class="search__discount--label">Ưu đãi</label>
