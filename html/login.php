@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/login.css">
+   
 </head>
 <body>
     <div class="main">
@@ -44,11 +45,19 @@
                         <span class="form-message"></span>
                     </div>
                     <div class="form-group">
+                        <input type="text" name="address" placeholder="Địa chỉ" class="form-input">
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
                         <input type="text" name="email" placeholder="Email" class="form-input">
                         <span class="form-message"></span>
                     </div>
                     <div class="form-group">
                         <input type="type" name="phone" placeholder="Số điện thoại" class="form-input">
+                        <span class="form-message"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" name="username" placeholder="Username" class="form-input">
                         <span class="form-message"></span>
                     </div>
                     <div class="form-group">

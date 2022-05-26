@@ -1,4 +1,4 @@
-import { handleControlData, handleUserCaretIcon, handleChangePage } from "./manager.js";
+import { handleRenderData, handleUserCaretIcon} from "./manager.js";
 
 let placeName = document.getElementById('place-name')
 let placeAddress = document.getElementById('place-address')
@@ -9,8 +9,6 @@ let placeHotelName = document.getElementById('place-hotelName')
 let placeHotelAddress = document.getElementById('place-hotelAddress')
 
 
-handleControlData(placeName, placeAddress, placeProvince, placePrice, placeIntroduce, placeHotelName, placeHotelAddress)
+handleRenderData(placeName, placeAddress, placeProvince, placePrice, placeIntroduce, placeHotelName, placeHotelAddress)
 
 handleUserCaretIcon()
-
-handleChangePage()

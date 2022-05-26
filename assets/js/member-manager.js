@@ -1,4 +1,4 @@
-import { handleControlData, handleUserCaretIcon, handleChangePage } from "./manager.js";
+import { handleRenderData, handleUserCaretIcon } from "./manager.js";
 
 let memberName = document.getElementById('member-name')
 let memberAddress = document.getElementById('member-address')
@@ -9,8 +9,6 @@ let memberPassword = document.getElementById('member-password')
 let memberRole = document.getElementById('member-role')
 
 
-handleControlData(memberName, memberAddress, memberEmail, memberPhone, memberUsername, memberPassword, memberRole)
+handleRenderData(memberName, memberAddress, memberEmail, memberPhone, memberUsername, memberPassword, memberRole)
 
 handleUserCaretIcon()
-
-handleChangePage()

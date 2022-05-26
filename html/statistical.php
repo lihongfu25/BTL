@@ -1,3 +1,7 @@
+<?php
+    $connect = mysqli_connect("localhost", "root", "", "qlbantour");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +37,21 @@
                     </a>
                 </li>
                 <li class="menu__item">
+                    <a href="image-manager.php" class="menu__link">
+                        <i class="fa-solid fa-map-location menu__icon"></i>
+                        Quản lý hình ảnh
+                    </a>
+                </li>
+                <li class="menu__item">
                     <a href="member-manager.php" class="menu__link">
                         <i class="fa-solid fa-users menu__icon"></i>
                         Quản lý thành viên
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="news-manager.php" class="menu__link">
+                        <i class="fa-solid fa-plane-departure menu__icon"></i>
+                        Quản lý tin tức
                     </a>
                 </li>
                 <li class="menu__item">
@@ -96,8 +112,12 @@
                         <div class="row">
                             <div class="col l-4">
                                 <div class="statistical pastel-orange">
-                                    <p class="statistical__title">Đã bán</p>
-                                    <h3 class="statistical__quantity">10k</h3>
+                                    <p class="statistical__title">Số tour đã bán</p>
+                                    <?php 
+                                        $sql = "SELECT MaTour FROM tour";
+                                        $rows = mysqli_fetch_all(mysqli_query($connect, $sql), MYSQLI_ASSOC);
+                                        echo "<h3 class='statistical__quantity'>" . count($rows) . "</h3>";
+                                    ?>
                                 </div>
                             </div>
                             <div class="col l-4">
@@ -106,18 +126,7 @@
                                     <h3 class="statistical__quantity">50M</h3>
                                 </div>
                             </div>
-                            <div class="col l-4">
-                                <div class="statistical pastel-yellow">
-                                    <p class="statistical__title">Đã bán</p>
-                                    <h3 class="statistical__quantity">10k</h3>
-                                </div>
-                            </div>
-                            <div class="col l-4">
-                                <div class="statistical pastel-blue">
-                                    <p class="statistical__title">Đã bán</p>
-                                    <h3 class="statistical__quantity">10k</h3>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
@@ -125,6 +134,6 @@
             </div>
             <p class="copyright-text">&copy; All rights reserved. <strong>MTP Travel</strong></p>
     </div>
-    <script type="module" src="../assets/js/"></script>
+    <!-- <script type="module" src="../assets/js/statical"></script> -->
 </body>
 </html>

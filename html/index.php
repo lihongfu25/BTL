@@ -280,12 +280,12 @@
                         <!-- slide img -->
                         <img src="https://busvietnam.net/wp-content/uploads/2019/05/nha-trang-1.jpg" alt="" class="slide-img first">
                             
-                                <img src="http://dulichvietnam.com.vn/data/du-lich-hawaii-1.jpg" alt="" class="slide-img second">
-    
-                                <img src="https://i.ytimg.com/vi/5Ok7-XHPGdA/maxresdefault.jpg" alt="" class="slide-img third">
-    
-                                <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/kealani-sunset-a-colorful-sunset-in-wailea-maui-hawaii-nature-photographer.jpg" alt="" class="slide-img final">
-    
+                        <img src="http://dulichvietnam.com.vn/data/du-lich-hawaii-1.jpg" alt="" class="slide-img second">
+
+                        <img src="https://i.ytimg.com/vi/5Ok7-XHPGdA/maxresdefault.jpg" alt="" class="slide-img third">
+
+                        <img src="https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/kealani-sunset-a-colorful-sunset-in-wailea-maui-hawaii-nature-photographer.jpg" alt="" class="slide-img final">
+
                         <!-- navigation auto -->
                         <div class="navigation-auto">
                             <div class="auto-btn1"></div>

@@ -37,6 +37,7 @@ let fullName = document.querySelector('.form-input[name="fullname"]')
 let email = document.querySelector('.form-input[name="email"]')
 let phone = document.querySelector('.form-input[name="phone"]')
 let password = document.querySelector('.form-input[name="create-password"]')
+let check = false
 
 fullName.onblur = function() {
     let regex = /^[\p{L} .'-]+$/u
@@ -44,14 +45,17 @@ fullName.onblur = function() {
     if (this.value == '') {
         this.nextElementSibling.innerText = 'Vui lòng điền trường này'
         this.style.borderColor = '#f33a58'
+        check = false
     }
     else if (!regex.test(this.value)) {
         this.nextElementSibling.innerText = 'Họ và tên chỉ chứa chữ cái'
         this.style.borderColor = '#f33a58'
+        check = false
     }
     else {
         this.nextElementSibling.innerText = ''
         this.style.borderColor = '#ccc'
+        check = true
     }
 }
 email.onblur = function() {
@@ -60,14 +64,17 @@ email.onblur = function() {
     if (this.value == '') {
         this.nextElementSibling.innerText = 'Vui lòng điền trường này'
         this.style.borderColor = '#f33a58'
+        check = false
     }
     else if (!regex.test(this.value)) {
         this.nextElementSibling.innerText = 'Vui lòng nhập vào một email'
         this.style.borderColor = '#f33a58'
+        check = false
     }
     else {
         this.nextElementSibling.innerText = ''
         this.style.borderColor = '#ccc'
+        check = true
     }
 }
 phone.onblur = function() {
@@ -76,58 +83,60 @@ phone.onblur = function() {
     if (this.value == '') {
         this.nextElementSibling.innerText = 'Vui lòng điền trường này'
         this.style.borderColor = '#f33a58'
+        check = false
     }
     else if (!regex.test(this.value)) {
         this.nextElementSibling.innerText = 'Vui lòng nhập theo định dạng ???(-.)???(-.)????'
         this.style.borderColor = '#f33a58'
+        check = false
     }
     else {
         this.nextElementSibling.innerText = ''
         this.style.borderColor = '#ccc'
+        check = true
     }
 }
 password.onblur = function() {
-    let regex = /^(?=.*[a-z])(?=.*[@$!%*#?&])(?=.*[0-9])[A-Za-z0-9@$!%*#?&]{8,}$/
+    let regex = /^(?=.*[a-zA-Z])(?=.*[@$!%*#?&])(?=.*[0-9])[A-Za-z0-9@$!%*#?&]{8,}$/
     
     if (this.value == '') {
         this.nextElementSibling.innerText = 'Vui lòng điền trường này'
         this.style.borderColor = '#f33a58'
+        check = false
     }
     else if (!regex.test(this.value)) {
         this.nextElementSibling.innerText = 'Mật khẩu tối thiểu 8 ký tự bao gồm chữ cái, chữ số và ký tự đặc biệt'
         this.style.borderColor = '#f33a58'
+        check = false
     }
     else {
         this.nextElementSibling.innerText = ''
         this.style.borderColor = '#ccc'
+        check = true
     }
 }
 
 const btnRegister = document.querySelector('.form-btn[name="register"]')
 btnRegister.onclick = function(e) {
-    let check = true
     if (fullName.value == '') {
         fullName.nextElementSibling.innerText = 'Vui lòng điền trường này'
         fullName.style.borderColor = '#f33a58'
-        check = false
     }
     if (email.value == '') {
         email.nextElementSibling.innerText = 'Vui lòng điền trường này'
         email.style.borderColor = '#f33a58'
-        check = false
     }
     if (phone.value == '') {
         phone.nextElementSibling.innerText = 'Vui lòng điền trường này'
         phone.style.borderColor = '#f33a58'
-        check = false
     }
     if (password.value == '') {
         password.nextElementSibling.innerText = 'Vui lòng điền trường này'
         password.style.borderColor = '#f33a58'
-        check = false
     }
     if (!check)
-        e.preventDefault();
-    else
+        e.preventDefault()
+    else {
         window.location.assign(window.location.pathname)
+    }
 }

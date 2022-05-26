@@ -3,6 +3,7 @@ import TourPlace from './tourPlace.js';
 
 Header()
 TourPlace()
+
 document.querySelector('.tour-square__place--details--btn').onclick = function() {
     window.location.assign('place.html')
 }

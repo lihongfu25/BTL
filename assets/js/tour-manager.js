@@ -1,13 +1,11 @@
-import { handleControlData, handleUserCaretIcon, handleChangePage } from "./manager.js";
+import { handleRenderData, handleUserCaretIcon } from "./manager.js";
 
 let tourName = document.getElementById('tour-name')
-let destination = document.getElementById('destination')
-let days = document.getElementById('days')
-let startDay = document.getElementById('start-day')
-let desc = document.getElementById('desc')
+let tourDestination = document.getElementById('tour-destination')
+let tourDays = document.getElementById('tour-days')
+let tourStartDay = document.getElementById('tour-startDay')
+let tourDesc = document.getElementById('tour-desc')
 
-handleControlData(tourName, destination, days, startDay, desc)
+handleRenderData(tourName, tourDestination, tourDays, tourStartDay, tourDesc)
 
 handleUserCaretIcon()
-
-handleChangePage()

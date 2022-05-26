@@ -1,3 +1,56 @@
+<?php
+    $connect = mysqli_connect("localhost", "root", "", "qlbantour");
+
+    $currentPage = 1;
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["page"]))
+            $currentPage = $_POST['page'];
+        elseif (isset($_POST["delete"])) {
+            $ID = $_POST["delete"];
+
+            $sql = "DELETE FROM tour WHERE MaTour = $ID";
+            mysqli_query($connect, $sql);
+        }
+        else {
+            if (isset($_POST["tour-name"]))
+                $tourName = $_POST["tour-name"];
+            if (isset($_POST["tour-destination"]))
+                $tourDestination = $_POST["tour-destination"];
+            if (isset($_POST["tour-days"]))
+                $tourDay = $_POST["tour-days"];
+            if (isset($_POST["tour-startDay"]))
+                $tourStartDay = $_POST["tour-startDay"];
+            if (isset($_POST["tour-desc"]))
+                $tourDesc = $_POST["tour-desc"];
+            
+            $tempSQL = "SELECT MaDiaDiem FROM diadiem WHERE TenDiaDiem = '$tourDestination'";
+            $maDiaDiem = mysqli_fetch_all(mysqli_query($connect, $tempSQL), MYSQLI_ASSOC)[0]['MaDiaDiem'];
+
+            if (isset($_POST["id"])) {
+                $ID = $_POST["id"];    
+    
+                $sql = "UPDATE tour
+                        SET TenTour = '$tourName',
+                            SoNgay = '$tourDay',
+                            NgayKhoiHanh = '$tourStartDay',
+                            MoTa = '$tourDesc',
+                            MaDiaDiem = $maDiaDiem
+                        WHERE MaTour = $ID
+                        ";
+                mysqli_query($connect, $sql);
+                echo "<script> alert('Cập nhật thành công !') </script>";
+            }
+            else {
+                $sql = "INSERT INTO tour(MaDiaDiem, TenTour, MoTa, NgayKhoiHanh, SoNgay)
+                        VALUES ($maDiaDiem, '$tourName', '$tourDesc', '$tourStartDay', $tourDay)
+                        ";
+                mysqli_query($connect, $sql);
+                echo "<script> alert('Thêm thành công !') </script>";
+            }
+        }   
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +86,21 @@
                     </a>
                 </li>
                 <li class="menu__item">
+                    <a href="image-manager.php" class="menu__link">
+                        <i class="fa-solid fa-map-location menu__icon"></i>
+                        Quản lý hình ảnh
+                    </a>
+                </li>
+                <li class="menu__item">
                     <a href="member-manager.php" class="menu__link">
                         <i class="fa-solid fa-users menu__icon"></i>
                         Quản lý thành viên
+                    </a>
+                </li>
+                <li class="menu__item">
+                    <a href="news-manager.php" class="menu__link">
+                        <i class="fa-solid fa-users menu__icon"></i>
+                        Quản lý tin tức
                     </a>
                 </li>
                 <li class="menu__item active">
@@ -115,142 +180,106 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="table-row">
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td class="text-center">1</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
-                                <tr class="table-row">
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td class="text-center">2</td>
-                                    <td>1</td>
-                                    <td class="text-center">
-                                        <i class="fa-solid fa-pencil update-btn"></i>
-                                        <i class="fa-solid fa-trash-can delete-btn"></i>
-                                    </td>
-                                </tr>
+                                <?php 
+                                    $sql = "SELECT MaTour, TenTour, TenDiaDiem, SoNgay, NgayKhoiHanh, MoTa
+                                            FROM tour t inner join diadiem d on t.MaDiaDiem = d.MaDiaDiem";
+                                    $rows = mysqli_fetch_all(mysqli_query($connect, $sql), MYSQLI_ASSOC);
+                                    $page = ceil(count($rows) / 10);
+                                    if ($currentPage == $page) {
+                                        for ($i = (($currentPage - 1) * 10); $i < count($rows); $i++) {
+                                            echo "
+                                                <tr class='table-row'>
+                                                    <td class='text-center'>" . $rows[$i]['MaTour'] . "</td>
+                                                    <td class='text-center'>" . $rows[$i]['TenTour'] . "</td>
+                                                    <td class='text-center'>" . $rows[$i]['TenDiaDiem'] . "</td>
+                                                    <td class='text-center'>" . $rows[$i]['SoNgay'] . "</td>
+                                                    <td class='text-center'>" . $rows[$i]['NgayKhoiHanh'] . "</td>
+                                                    <td class='text-overflow' style='max-width: 600px'>" . $rows[$i]['MoTa'] . "</td>
+                                                    <td class='text-center'>
+                                                        <i class='fa-solid fa-pencil update-btn'></i>
+                                                        <i class='fa-solid fa-trash-can delete-btn'></i>
+                                                    </td>
+                                                </tr>
+                                            
+                                            ";
+                                        }
+                                    }
+                                    else {
+                                        for ($i = (($currentPage - 1) * 10); $i <= ($currentPage * 10 - 1); $i++) {
+                                            echo "
+                                                <tr class='table-row'>
+                                                    <td class='text-center'>" . $rows[$i]['MaTour'] . "</td>
+                                                    <td class='text-center'>" . $rows[$i]['TenTour'] . "</td>
+                                                    <td class='text-center'>" . $rows[$i]['TenDiaDiem'] . "</td>
+                                                    <td class='text-center'>" . $rows[$i]['SoNgay'] . "</td>
+                                                    <td class='text-center'>" . $rows[$i]['NgayKhoiHanh'] . "</td>
+                                                    <td class='text-overflow' style='max-width: 600px'>" . $rows[$i]['MoTa'] . "</td>
+                                                    <td class='text-center'>
+                                                        <i class='fa-solid fa-pencil update-btn'></i>
+                                                        <i class='fa-solid fa-trash-can delete-btn'></i>
+                                                    </td>
+                                                </tr>
+                                            
+                                            ";
+                                        }
+                                    }
+                                ?>
                             </tbody>
                         </table>
                         
                     </div>
     
-                    <div class="page">
-                        <button class="page-nav page-prev" disabled>
-                            <i class="fa-solid fa-angle-left"></i>
-                        </button>
-                        <button class="page-nav page-number active">1</button>
-                        <button class="page-nav page-number">2</button>
-                        <button class="page-nav page-number">3</button>
-                        <button class="page-nav page-next">
-                            <i class="fa-solid fa-angle-right"></i>
-                        </button>
-                    </div>
+                    <form method="POST" class="page">
+                        
+                        <?php 
+                            echo "
+                                <button name='page' class='page-nav page-prev'>
+                                    <i class='fa-solid fa-angle-left'></i>
+                                </button>
+                            ";
+                            for ($i = 1; $i <= $page; $i++)
+                                echo "<button name='page' value='" . $i . "' class='page-nav page-number'>" . $i . "</button>";
+                            echo "
+                                <button name='page' class='page-nav page-next' value='" . $currentPage+1 . "'>
+                                    <i class='fa-solid fa-angle-right'></i>
+                                </button>
+                                <script>
+                                    let changePageBtns = document.querySelectorAll('.page-number')
+                                    let prevPageBtn = document.querySelector('.page-prev')
+                                    let nextPageBtn = document.querySelector('.page-next')
+
+                                    if ($currentPage == 1)
+                                        prevPageBtn.disabled = true
+                                    else
+                                        prevPageBtn.disabled = false
+
+                                    if ($currentPage == $page)
+                                        nextPageBtn.disabled = true
+                                    else
+                                        nextPageBtn.disabled = false
+
+                                    changePageBtns.forEach(changePageBtn => {
+                                        if (changePageBtn.value == '$currentPage')
+                                            changePageBtn.classList.add('active')
+                                        else
+                                            changePageBtn.classList.remove('active')
+                                    })
+
+                                    prevPageBtn.onclick = () => {
+                                        console.log(prevPageBtn.name)
+                                        if ($currentPage > 1)
+                                            prevPageBtn.value = '" . $currentPage - 1 . "'
+                                    }
+
+                                    nextPageBtn.onclick = () => {
+                                        if ($currentPage < $page)
+                                            nextPageBtn.value = '" . $currentPage + 1 . "'
+                                    }
+                                </script>
+                            ";
+                        ?>
+                        
+                    </form>
                 </div>
             </div>
             <p class="copyright-text">&copy; All rights reserved. <strong>MTP Travel</strong></p>
@@ -261,38 +290,44 @@
 
                 <h2 class="form-heading text-center">Nhập thông tin mới</h2>
 
+                <input type="text" id="id" name="" style="display: none;">
+
                 <div class="form-group">
                     <label for="tour-name" class="form-label">Tên tour:</label>
-                    <input id="tour-name" name="tour-name" class="form-input" placeholder="Tên tour"></input>
+                    <input id="tour-name" name="tour-name" class="form-input" placeholder="Tên tour" required></input>
                     <span class="form-message"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="destination" class="form-label">Điểm đến</label>
-                    <select name="destination" id="destination" class="form-input">
-                        <option value="default" class="form-option">Điểm đến</option>
-                        <option value="Hải Dương" class="form-option">Hải Dương</option>
-                        <option value="Vĩnh Phúc" class="form-option">Vĩnh Phúc</option>
-                        <option value="Nghệ An" class="form-option">Nghệ An</option>
+                    <label for="tour-destination" class="form-label">Điểm đến</label>
+                    <select name="tour-destination" id="tour-destination" class="form-input" required>
+                        <?php 
+                            echo "<option value='' class='form-option'>Điểm đến</option>";
+                            $sql = "SELECT TenDiaDiem FROM diadiem";
+                            $rows = mysqli_fetch_all(mysqli_query($connect, $sql), MYSQLI_ASSOC);
+                            for ($i = 0; $i < count($rows); $i++) {
+                               echo "<option value='" . $rows[$i]['TenDiaDiem'] . "' class='form-option'>" . $rows[$i]['TenDiaDiem'] . "</option>";
+                            } 
+                        ?>
                     </select>
                     <span class="form-message"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="days" class="form-label">Số ngày:</label>
-                    <input id="days" class="form-input" placeholder="Số ngày"></input>
+                    <label for="tour-days" class="form-label">Số ngày đi:</label>
+                    <input id="tour-days" name="tour-days" class="form-input" placeholder="Số ngày đi" required></input>
                     <span class="form-message"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="start-day" class="form-label">Ngày khởi hành:</label>
-                    <input id="start-day" type="datetime-local" class="form-input" placeholder="Ngày khởi hành"></input>
+                    <label for="tour-startDay" class="form-label">Ngày khởi hành:</label>
+                    <input id="tour-startDay" name="tour-startDay" type="date" class="form-input" placeholder="Ngày khởi hành" required></input>
                     <span class="form-message"></span>
                 </div>
 
                 <div class="form-group">
-                    <label for="desc" class="form-label">Mô tả:</label>
-                    <textarea id="desc" name="desc" class="form-input" rows="5" placeholder="Mô tả về chuyến đi"></textarea>
+                    <label for="tour-desc" class="form-label">Mô tả:</label>
+                    <textarea id="tour-desc" name="tour-desc" class="form-input" rows="5" placeholder="Mô tả về chuyến đi" required></textarea>
                     <span class="form-message"></span>
                 </div>
 
@@ -307,7 +342,7 @@
         <form class="form-delete text-center" method="post">
             <p class="form-delete__message">Hành động này không thể hoàn tác. Bạn có chắc muốn tiếp tục ?</p>
             <div class="form-delete__btn">
-                <button type="submit" class="form-delete__btn--yes">Có</button>
+                <button name="delete" type="submit" class="form-delete__btn--yes">Có</button>
                 <button type="button" class="form-delete__btn--no">Không</button>                
             </div>
         </div>
